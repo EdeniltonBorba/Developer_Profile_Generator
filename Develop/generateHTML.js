@@ -28,7 +28,7 @@ const colors = {
 function generateHTML(data) {
   return `<!DOCTYPE html>
 <html lang="en">
-   <head>
+    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -170,5 +170,28 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
-        }
+      </style>
+    </head>
+      <body>
+        <div class="wrapper">
+          <main id="app" class="container">
+          <div class="card">
+            <div class="photo-header">
+              <img width="240" height="240" src="${data.user.avatar_url}" />
+              </div>
+              <div class="row">
+                <h1>${data.user.name}</h1>
+                <code>${JSON.stringify(data.user)}</code>
+              </div>
+            </div>
+          </main>
+        </div>
+      </body>
+    </html>`;
+  }
+  
+  module.exports = {
+    generateHTML
+  };
+  
+  

@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/EdeniltonBorba/Developer_Profile_Generator/issues"
   },
-  "homepage": "https://github.com/EdeniltonBorba/Developer_Profile_Generator#readme"
+  "homepage": "https://github.com/EdeniltonBorba/Developer_Profile_Generator#readme",
+  "dependencies": {
+    "file-system": "^2.2.2",
+    "inquirer": "^7.0.0"
+  }
 }
