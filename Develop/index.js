@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
-/*
 const axios = require("axios");
 const fs = require("fs");
-*/
+const pdfPuppeteer = require("pdf-puppeteer");
+const html = require("./generateHTML.js");
 var userGitHub;
 const questions = [
     {
