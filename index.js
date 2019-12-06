@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
-const pdfPuppeteer = require("pdf-puppeteer");
+const puppeteer = require("puppeteer");
 const html = require("./generateHTML.js");
 
 const questions = [
@@ -10,8 +10,10 @@ const questions = [
     },
 
     {
+        type:"list",
         name:"color",
-        message:"What is your favourite color?"
+        message:"What is your favourite color?",
+        choices:["green", "blue", "pink", "red"]
     },
 ];
 
@@ -24,14 +26,14 @@ async function init() {
 
     const gitResponse = await axios.get(githubUrl);
 
-    userProfile.urlGit = gitResponse.data.html_url;
-    userProfile.following = gitResponse.data.following;
-    userProfile.currently = gitResponse.data.company;
+    userProfile.name = gitResponse.data.name;
     userProfile.imgUrl = gitResponse.data.avatar_url;
     userProfile.location = gitResponse.data.location;
     userProfile.public_repos = gitResponse.data.public_repos;
     userProfile.followers = gitResponse.data.followers;
-    userProfile.name = gitResponse.data.name;
+    userProfile.following = gitResponse.data.following;
+    userProfile.currently = gitResponse.data.company;
+    userProfile.urlGit = gitResponse.data.html_url;
 
     const gitStarReponse = await axios.get(starrepoUrl);
 
