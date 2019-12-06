@@ -42,54 +42,26 @@ async function init() {
 
     userProfile.starrepos = gitStarReponse.data.length;
 
-
-
-
-
-}
-
-inquirer.prompt(questions)
-.then(function(resp){
-    userGitHub = resp;
-    console.log(`Hallo ${resp.username} `);
-    inquirer.prompt({
-        name:"color",
-        message:"What is your favorite color?",
-        type: "list",
-        choices:["green", "yellow", "red"],
-        filter: function(str){
-            return str.toLowerCase();
+    const htmlContent = html.generateHTML(userProfile);
+    const browser = await pdfPuppeteer.lauch({ headless: true }):
+    const page = await browser.newPage();
+    await page.setContent(htmlContent);
+    const buffer = await page.pdf({
+        path:`./${userProfile.name}.pdf`,
+        format: "A4",
+        printBackground: true,
+        margin: {
+          left: "0px",
+          top: "0px",
+          right: "0px",
+          bottom: "0px"
         }
-   })
-   .then( function(resp){
-       console.log(`Color favorite ${resp.username} ist ${resp.color} `);
-   });
+      });
 
-});
-
-/*
-function writeToFile(fileName, data) {
-    fs.writeFile(`${fileName}.html`, data, err => {
-        if (err) throw err;
-    });
- 
-};
-
-function init() {
-    inquirer.prompt(questions).then(data => {
-        let username = data.username;
-        let gitHubUrl = `https://api.github.com/users/${username}`;
-        let starRepoUrl = `https://api.github.com/users/${username}/starred?`
-
-        axios
-        
-        .get(gitHubUrl)
-        .then(response => {
-            data.name = response.data.avatar_url;
-        });
-    });
+      await browser.close();
 }
-
 
 init();
-*/
+
+
+    
