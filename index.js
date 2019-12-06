@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 const puppeteer = require("puppeteer");
-const html = require("./generateHTML.js");
+const html = require("./generateHTML");
 
 const questions = [
     {
@@ -41,7 +41,7 @@ async function init() {
     userProfile.starrepos = gitStarReponse.data.length;
 
     const htmlContent = html.generateHTML(userProfile);
-    const browser = await pdfPuppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.setContent(htmlContent);
     const buffer = await page.pdf({
