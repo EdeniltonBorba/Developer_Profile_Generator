@@ -39,7 +39,7 @@ async function init() {
     userProfile.starrepos = gitStarReponse.data.length;
 
     const htmlContent = html.generateHTML(userProfile);
-    const browser = await pdfPuppeteer.lauch({ headless: true }):
+    const browser = await pdfPuppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.setContent(htmlContent);
     const buffer = await page.pdf({
