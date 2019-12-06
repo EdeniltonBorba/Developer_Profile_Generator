@@ -1,9 +1,7 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
-const fs = require("fs");
 const pdfPuppeteer = require("pdf-puppeteer");
 const html = require("./generateHTML.js");
-var userGitHub;
 
 const questions = [
     {
@@ -15,8 +13,6 @@ const questions = [
         name:"color",
         message:"What is your favourite color?"
     },
-
-  
 ];
 
 async function init() {
