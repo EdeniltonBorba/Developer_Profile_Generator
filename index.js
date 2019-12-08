@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 const puppeteer = require("puppeteer");
-const html = require("./generateHTML");
+const html = require("./generateHTML.js");
 
 const questions = [
     {
