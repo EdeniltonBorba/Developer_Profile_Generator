@@ -20,7 +20,7 @@ const questions = [
 async function init() {
     const userProfile = await inquirer.prompt(questions);
 
-    var username = userProfile.githubUsername;
+    var username = userProfile.username;
     var githubUrl = `https://api.github.com/users/${username}`;
     var starrepoUrl = `https://api.github.com/users/${username}/starred?`;
 
